@@ -1,0 +1,32 @@
+<form (ngSubmit)="saveData(form)">
+
+  <label for="teamName">Name</label>
+  <input type="text" name="teamName" 
+    [(ngModel)]="form.teamName" placeholder="Team Name">
+  
+  <label for="teamScore">Score</label>
+  <input type="number" name="teamScore" 
+    [(ngModel)]="form.teamScore" placeholder="Team Score">
+
+  <hr>
+  <button type="submit">Save</button>
+  <button type="reset">Clear</button>
+</form>
+
+<div>
+  <p>
+    Teams List
+  </p>
+
+  <ul>
+    <li *ngFor="let team of teams | async">
+      <div>
+        {{team.teamName}} | {{team.teamScore}}
+        
+        <button type="button" (click)="removeTeam(team)">Remove Team</button>    
+      </div>
+
+      <br>
+    </li>
+  </ul>
+</div>
